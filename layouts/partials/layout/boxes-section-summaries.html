@@ -1,0 +1,13 @@
+<div class="card card-bordered">
+    <div class="card-body">
+        <h5 class="card-title">{{ .context.Title }}</h5>
+        <div class="card-text">
+            {{ if .context.Params.description  }}
+                {{ .context.Params.description | markdownify }}
+            {{ else }}
+                {{ .context.Summary  }}
+            {{ end }}
+        </div>
+        <a href="{{ .context.RelPermalink }}" class="card-link">Read more</a>
+    </div>
+</div>

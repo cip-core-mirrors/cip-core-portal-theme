@@ -1,0 +1,48 @@
+.nav-sg .navbar-brand {
+    
+    color: #000;
+    font-size: 1.25rem;
+}
+
+.nav-sg {
+    padding: 15px;
+}
+
+.nav-sg .navbar-sg-nav {
+
+    margin: 0rem 1rem;
+}
+
+.nav-sg .navbar-sg-nav ul {
+
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.nav-sg .navbar-sg-nav .nav-sg-link{
+
+    padding: 0.75rem 0.75rem;
+    display: block;
+    color: #8a9496;
+    font-weight: 500;
+}
+
+.nav-sg .navbar-sg-nav ul ul {
+
+    margin: 0 2rem;
+}
+
+.menu-box {
+
+    margin: 15px;
+}
+
+.active-link-bg {
+
+    background-color: rgba(138,148,150,.1);
+}
+.active-link-color {
+    
+    color: #303333!important;
+}

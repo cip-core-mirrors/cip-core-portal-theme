@@ -1,0 +1,8 @@
+<!-- TOCs need to be declared explicitly in the front matter of content/*.md -->
+<aside>
+	{{ if .Params.toc }}
+		<p class="font-weight-bold">What's on this Page</p>
+  	{{ .TableOfContents }}
+	{{ end }}
+	{{- partial "previous-next-links-in-section.html" . -}}
+</aside>

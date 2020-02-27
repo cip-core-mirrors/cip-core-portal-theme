@@ -1,0 +1,14 @@
+<!-- scripts -->
+{{ $scripts := resources.Get "/output/js/main.js" }}
+{{ $isDev := eq hugo.Environment "development" }}
+{{ if not $isDev }}
+{{ $scripts = $scripts | fingerprint }}
+{{ end }}
+{{ with $scripts }}
+  {{ if  $isDev }}
+  <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ else }}
+  <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+  {{ end }}
+  {{ $.Scratch.Set "scripts" . }}    
+{{end}}

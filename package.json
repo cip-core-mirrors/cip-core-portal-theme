@@ -1,0 +1,38 @@
+{
+  "name": "cip-core-portal-theme",
+  "version": "1.0.0",
+  "description": "This the hugo for the cip core portal",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --mode development",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cip-core-mirrors/cip-core-portal-theme"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "autoprefixer": "^9.7.4",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.4.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "postcss-import": "^12.0.1",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
+    "postcss-loader": "^3.0.0"
+  },
+  "dependencies": {
+    "@babel/preset-react": "^7.8.3",
+    "axios": "^0.19.2",
+    "core-js": "^3.6.4",
+    "keycloak-js": "^8.0.1",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0"
+  }
+}

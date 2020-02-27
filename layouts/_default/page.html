@@ -1,0 +1,27 @@
+<div>
+    {{ if .Params.categories }}
+        {{ range .Params.categories }}
+            <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}" class="badge badge-pill badge-primary">
+                {{ humanize  . | upper }}
+            </a>
+        {{ end }}
+    {{end}}
+</div>
+<h1 class="mt-2 mt-lg-3">
+    {{- if eq .Section "functions" -}}
+        {{ .LinkTitle }}
+    {{- else -}}
+        {{ .Title }}
+    {{- end -}}
+</h1>
+<div class="text-muted mb-2">
+    Last updated: {{ .Lastmod.Format "January 2, 2006" }}
+</div>
+{{ with .Params.description }}
+    <div class="text-muted">
+        {{ . | markdownify }}
+    </div>
+{{ end }}
+<div class="mt-2 mt-lg-4">
+    {{ .Content }} 
+</div>

@@ -1,0 +1,20 @@
+{{ define "main" }}
+    <div class="container-fluid mt-2 mt-lg-4">
+        <div class="row">
+            <div class="col-12 col-md-3 px-4 my-4 my-md-0 order-0">
+                {{ partial "nav-links-docs.html" . }}
+            </div>
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <div>
+                    {{ .Render "page" }}
+                </div>
+                <div class="mt-2">
+                    {{ partial "related.html" . }}
+                </div>
+            </div>
+            <div class="col-12 col-md-3 px-4 my-4 my-md-0 order-1 order-md-3">
+                {{ partial "toc.html" . }}
+            </div>
+        </div>
+    </div> 
+{{ end }}

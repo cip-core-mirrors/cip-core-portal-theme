@@ -1,0 +1,29 @@
+{{ define "main" }}
+    {{ $section_to_display := .Pages }}
+    <div class="container-fluid mt-2 mt-lg-4">
+        <div class="row">
+            <div class="col-12 col-md-3 px-4 my-4 my-md-0 order-0">
+                    {{ partial "nav-links-docs.html" . }}
+            </div>
+            <div class="col-12 col-md-6 order-2 order-md-1">
+                <h1>
+                    {{ .Title }}
+                </h1>
+                <div class="row mt-2 mt-md-4">
+                    {{ range $key, $value := .Data.Terms }}
+                        <div class="col-12 col-sm-6 col-md-4 my-2 my-0">
+                            <a href="{{ "/" | relLangURL }}{{ $.Data.Plural | urlize }}/{{ $key | urlize }}" class="text-dark h4">
+                                {{ $key | humanize }}:
+                            </a>
+                            <ul class="list-group mt-2">
+                                {{ range $value.Pages }}
+                                    <a href="{{ .Permalink }}" class="list-group-item">{{ .Title }}</a>
+                                {{ end }}
+                            </ul>
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+{{ end }}

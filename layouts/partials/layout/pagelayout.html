@@ -1,0 +1,25 @@
+{{ $section_to_display := .section_to_display  }}
+<div class="container-fluid pt-2 pt-lg-4">
+    <div class="row">
+        <div class="col-3  px-4">
+            {{ partial "nav-links-docs.html" .context }}
+        </div>
+        <div class="col-9 col-lg-6">
+             <div>
+                <h1 class="primary-color-dark f2">
+                    {{ with $.context.Data.Singular }}{{ . | humanize }}: {{ end }}{{ .context.Title }}
+                </h1>
+             </div>
+             <div class="{{ .Site.Params.copyClass }} mid-gray f5 f4-l">
+                {{ .context.Content }}
+            </div>
+            <div class="row mt-5">
+                {{ range $section_to_display }}
+                    <div class="col-12 col-lg-md-6 col-lg-3">
+                        {{ partial "layout/boxes-section-summaries" (dict "context" . ) }}
+                    </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</div>
