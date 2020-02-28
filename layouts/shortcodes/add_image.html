@@ -1,0 +1,20 @@
+{{ $original := .Page.Resources.GetMatch (printf "media/*%s*" (.Get 0)) }}
+{{ $option := .Get 1 }}
+{{ .Scratch.Set "image" ($original) }}
+{{ $image := .Scratch.Get "image" }}
+<figure style="padding: 0.25rem; margin: 2rem 0">
+{{if eq $option "Max_Size" }}
+<img style="max-width: 100%; width: max; height: max;" src="{{ $image.RelPermalink }}">
+{{ else }}
+  <img style="max-width: 100%; width: auto; height: auto;" src="{{ $image.RelPermalink }}" width="{{ $image.Width }}" height="{{ $image.Height }}">
+{{ end }}
+  <figcaption>
+	<small>
+	{{ with .Inner }}
+	{{ . }}
+	{{ else }}
+  
+	{{ end }}
+	</small>
+	</figcaption>
+</figure>
