@@ -1,6 +1,5 @@
 import '../css/main.css';
 import './menu';
-import './botpress-inject';
 import './botpress';
 import axios from 'axios';
 import React from 'react';
