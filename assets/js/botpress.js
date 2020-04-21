@@ -27,11 +27,14 @@ window.addEventListener("load", function() {
           if (pageType !== 'loginPage') {
             // Read Keycloak token
             const token = getCookie('kc-access')
+            console.log(token);
             if (token) {
+              console.log("token find")
               // Connected
               firstEvent.type = "keycloak_jwt"
               firstEvent.value = token
             } else {
+              console.log("no token")
               firstEvent.type = "keycloak_disconnect"
             }
           }
