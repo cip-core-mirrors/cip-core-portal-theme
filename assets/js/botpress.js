@@ -26,7 +26,7 @@ window.addEventListener("load", function() {
           firstEvent.type = pageType
           if (pageType !== 'loginPage') {
             // Read Keycloak token
-            const token = getCookie('keycloak_token')
+            const token = getCookie('kc-access')
             if (token) {
               // Connected
               firstEvent.type = "keycloak_jwt"
