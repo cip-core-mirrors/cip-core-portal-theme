@@ -11,7 +11,7 @@
 
                 {{ range .Site.Menus.global }}
                     <li class="nav-item {{ if $currentPage.IsMenuCurrent "global" . }} active {{ end }}">
-                        <a class="nav-link" href="{{ .URL }}">
+                        <a class="nav-link" href="{{ .URL | absLangURL  }}">
                             {{ .Name }}
                         </a>
                     </li>
