@@ -21,7 +21,7 @@ axios.get('/oauth/expired')
 
         axios.get('/oauth/token')
             .then(response => {
-                document.getElementById('botpress-widget').setAttribute('subject', response.data.sub);
+                // document.getElementById('botpress-widget').setAttribute('subject', response.data.sub);
                 document.getElementById('dropdownMenuButton').innerText = response.data.preferred_username
             })
             .catch(error => {
