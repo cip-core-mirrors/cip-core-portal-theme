@@ -22,17 +22,22 @@
     {{ end -}}
     
     {{ $isDev := eq hugo.Environment "development" }}
-    {{ $stylesheet := resources.Get "/output/css/main.css"}}
-    {{ if not $isDev }}
-    {{ $stylesheet = $stylesheet | minify | fingerprint }}
-    {{ end }}
-    {{ with $stylesheet }}
-      {{ if $isDev }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
-      {{ else }}
-      <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+    {{ $isThemeDebug := eq hugo.Environment "theme-debug" }}
+    {{if not $isThemeDebug}}
+      {{ $stylesheet := resources.Get "/output/css/main.css"}}
+      {{ if not $isDev }}
+      {{ $stylesheet = $stylesheet | minify | fingerprint }}
       {{ end }}
-      {{ $.Scratch.Set "stylesheet" . }}    
+      {{ with $stylesheet }}
+        {{ if $isDev }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ else }}
+        <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous">
+        {{ end }}
+        {{ $.Scratch.Set "stylesheet" . }}    
+      {{end}}
+    {{else}}
+      <link rel="stylesheet" href="http://localhost:3000/asset/output/css/main.css">
     {{end}}
 
 
