@@ -1,14 +1,19 @@
 <!-- scripts -->
 {{ $scripts := resources.Get "/output/js/main.js" }}
 {{ $isDev := eq hugo.Environment "development" }}
-{{ if not $isDev }}
-{{ $scripts = $scripts | fingerprint }}
-{{ end }}
-{{ with $scripts }}
-  {{ if  $isDev }}
-  <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
-  {{ else }}
-  <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+{{ $isThemeDebug := eq hugo.Environment "theme-debug" }}
+{{if not $isThemeDebug}}
+  {{ if not $isDev }}
+  {{ $scripts = $scripts | fingerprint }}
   {{ end }}
-  {{ $.Scratch.Set "scripts" . }}    
+  {{ with $scripts }}
+    {{ if  $isDev }}
+    <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ else }}
+    <script type="text/javascript" src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" crossorigin="anonymous" defer></script>
+    {{ end }}
+    {{ $.Scratch.Set "scripts" . }}    
+  {{end}}
+{{else}}
+  <script type="text/javascript" src="http://localhost:3000/asset/output/js/main.js"></script>
 {{end}}

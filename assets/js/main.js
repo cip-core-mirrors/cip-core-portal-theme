@@ -7,32 +7,27 @@ import ReactDOM from 'react-dom';
 import {DropdownButton, Dropdown, Button}  from 'react-bootstrap'
 
 
-const logStatusDiv = document.getElementById('logStatusDiv');
+window.addEventListener('load', () => {
 
-axios.get('/oauth/expired')
-    .then((response) => {
-
-        ReactDOM.render(
-            <DropdownButton id="dropdownMenuButton" title="...." variant="outline-secondary">
-                <Dropdown.Item href={`/oauth/logout?redirect=http://${window.location.hostname}:${window.location.port}`}>Logout</Dropdown.Item>
-            </DropdownButton>,
-            logStatusDiv
-        )
-
-        axios.get('/oauth/token')
-            .then(response => {
-                // document.getElementById('botpress-widget').setAttribute('subject', response.data.sub);
-                document.getElementById('dropdownMenuButton').innerText = response.data.preferred_username
-            })
-            .catch(error => {
-                
-                document.getElementById('dropdownMenuButton').innerText = 'Unknown user'
-            })
-    })
-    .catch((error) => {
-
-        ReactDOM.render(
-            <Button variant="outline-secondary" className="navbar-text">Unauthenticated user</Button>,
-            logStatusDiv
-        )
-    })
+    const logStatusDiv = document.getElementById('logStatusDiv');
+    
+    axios.get('/oauth/token')
+        .then(response => {
+    
+            window.postMessage({subject: response.data.sub})
+    
+            ReactDOM.render(
+                <DropdownButton id="dropdownMenuButton" title={response.data.name} variant="outline-secondary">
+                    <Dropdown.Item href={`/oauth/logout?redirect=http://${window.location.hostname}:${window.location.port}`}>Logout</Dropdown.Item>
+                </DropdownButton>,
+                logStatusDiv
+            )
+        })
+        .catch(error => {
+            
+            ReactDOM.render(
+                <Button variant="outline-secondary" className="navbar-text">Unauthenticated user</Button>,
+                logStatusDiv
+            )
+        })
+})
