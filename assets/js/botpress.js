@@ -8,7 +8,6 @@ window.addEventListener("load", function() {
     let subject;
     window.addEventListener("message", function(event) {
       if (event.data.subject) {
-        console.log("ok sub chat")
         subject = event.data.subject;
       } else if (event.data.name === 'webchatLoaded') {
         // Do nothing

@@ -3,8 +3,13 @@
     <nav role="navigation" class="navbar-sg-nav">
         <ul>
             {{ range .Site.Menus.docs.ByWeight }}
-                <li class="{{cond (or ($currentPage.HasMenuCurrent "docs" .) (eq $currentPage.URL .URL)) "active-link-bg" ""}}">
-                    <a href="{{ cond .HasChildren "#" .URL}}" class="nav-sg-link {{ cond .HasChildren "menu-block-link" ""}} {{ cond (and (eq $currentPage.URL .URL) (not ($currentPage.HasMenuCurrent "docs" .))) "active-link-color" ""}}">
+                <li class="{{cond (or ($currentPage.HasMenuCurrent "docs" .) (eq $currentPage.RelPermalink .URL)) "active-link-bg" ""}}">
+                    <!-- {{ $currentPage.RelPermalink }}
+                    {{ .URL }} -->
+                    <a 
+                        href="{{ cond .HasChildren "#" (print $.Site.LanguagePrefix .URL)}}" 
+                        class="nav-sg-link {{ cond .HasChildren "menu-block-link" ""}} 
+                            {{ cond (and (eq $currentPage.RelPermalink (print $.Site.LanguagePrefix .URL)) (not ($currentPage.HasMenuCurrent "docs" .))) "active-link-color" ""}}">
                         {{ .Name }}
                     </a>
 
