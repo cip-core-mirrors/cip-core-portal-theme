@@ -1,8 +1,8 @@
 window.addEventListener("load", function() {
   if (window.botpressWebChat) {
     window.botpressWebChat.init({
-      host: "https://botpress.apps.ocp.lab-nxtit.com",
-      botId: "botpress-stable",
+      host: '{{--BOTPRESS_URL--}}',
+      botId: '{{--BOTPRESS_NAME--}}',
     })
 
     let subject;
