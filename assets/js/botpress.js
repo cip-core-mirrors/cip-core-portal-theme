@@ -13,9 +13,12 @@ window.addEventListener("load", function() {
         // Do nothing
       } else if (event.data.message_type === "visit") {
         // Reset session
-        window.botpressWebChat.sendEvent({ type: "session_reset" })
+        //window.botpressWebChat.sendEvent({ type: "session_reset" })
 
         window.botpressWebChat.sendEvent(subject ? {type: 'keycloak_connect', value: subject}: {type: 'keycloak_disconnect'})
+        setTimeout(function() {
+          window.botpressWebChat.sendEvent({type: 'message', text: 'Hello'})
+        }, 1000)
       }
     })
   }
