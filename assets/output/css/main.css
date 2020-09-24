@@ -47,3 +47,13 @@
     
     color: #303333!important;
 }
+
+.collaboration-banner {
+    background: url(/image/84c1ef78066350eb7ab20f941b94b649.jpg) no-repeat;
+    background-size: cover;
+}
+
+.logo-element {
+    width: 100px;
+    height: 100px;
+}

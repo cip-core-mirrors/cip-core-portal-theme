@@ -34,12 +34,25 @@ module.exports = {
                     }
                    
                 ]
+            },
+            {
+                test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'static/image/',
+                            publicPath: '/image'
+                        },
+                    }
+                ],
+                
             }
         ]
     },
     output: {
-        path: path.resolve(__dirname, "assets/output"),
-        filename: "js/[name].js" // string
+        path: path.resolve(__dirname),
+        filename: "assets/output/js/[name].js" // string
     },
     devServer: {
         port: 3000,
@@ -48,7 +61,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: "css/[name].css"
+            filename: "assets/output/css/[name].css"
         })
     ]
 }
