@@ -1,1 +1,11 @@
 @import url('aside.css');
+
+.collaboration-banner {
+    background: url(../image/banner-collaboration.jpg) no-repeat;
+    background-size: cover;
+}
+
+.logo-element {
+    width: 100px;
+    height: 100px;
+}
