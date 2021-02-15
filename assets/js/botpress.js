@@ -1,8 +1,16 @@
+function idGenerator() {
+  const c4 = function() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  };
+  return (c4()+c4()+"-"+c4()+"-"+c4()+"-"+c4()+"-"+c4()+c4()+c4());
+}
+
 window.addEventListener("load", function() {
   if (window.botpressWebChat) {
     window.botpressWebChat.init({
       host: '{{--BOTPRESS_URL--}}',
       botId: '{{--BOTPRESS_NAME--}}',
+      userId: idGenerator(),
     })
 
     let subject;
