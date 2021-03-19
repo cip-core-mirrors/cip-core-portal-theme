@@ -1,0 +1,12 @@
+{{ if .Get "href" }}
+<a href={{.Get "href"}}
+    class="text-link"
+    {{ with .Get "title"}}title="{{.}}"{{end}}
+    {{ with .Get "blank" }} target="_blank" rel="noopener noreferrer" {{ end }}
+>
+    {{ if .Get "hrefAsTitle"}}{{.Get "href"}}{{else}}{{.Inner}}{{end}}
+    
+</a>
+{{ else }}
+{{ errorf "missing value for param 'href': %s" .Position }}
+{{ end }}
