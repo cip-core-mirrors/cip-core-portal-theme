@@ -25,11 +25,12 @@ module.exports = {
                     { 
                         loader:  "postcss-loader",
                         options: {
-                            ident: "postcss",
-                            plugins: () => [
-                                require("autoprefixer"),
-                                require("postcss-import")
-                            ]
+                            postcssOptions: {
+                                plugins: [
+                                    require("postcss-import"),
+                                    require("autoprefixer")
+                                ]
+                            }
                         }
                     }
                    
@@ -37,16 +38,12 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    {
-                        loader: 'file-loader',
-                        options: {
-                            outputPath: 'static/image/',
-                            publicPath: '/image'
-                        },
-                    }
-                ],
-                
+                type: 'asset/resource',
+                generator: {
+                    filename: '[name][ext]',
+                    outputPath: 'static/image/',
+                    publicPath: '/image/'
+                }
             }
         ]
     },
