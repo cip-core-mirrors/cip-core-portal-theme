@@ -1,15 +1,21 @@
 {
+    "targets": {
+        "browsers": [
+            "last 5 versions",
+            "ie >= 8"
+        ]
+    },
     "presets": [
-        ["@babel/preset-env", {
-            "useBuiltIns": "usage",
-            "corejs": "3",
-            "targets": {
-                "browsers": [
-                    "last 5 versions",
-                    "ie >= 8"
-                ]
-            }
-        }],
+        "@babel/preset-env",
         "@babel/preset-react"
+    ],
+    "plugins": [
+        [
+            "polyfill-corejs3",
+            {
+                "method": "usage-global",
+                "version": "3"
+            }
+        ]
     ]
 }
